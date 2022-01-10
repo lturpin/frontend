@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { API_URL } from '@/config/index';
 import styles from '@/styles/Form.module.css';
 
+<<<<<<< HEAD
 const ImageUpload = ({ evtId, imageUploaded, token }) => {
+=======
+const ImageUpload = ({ evtId, imageUploaded }) => {
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
   const [image, setImage] = useState(null);
 
   const handleSubmit = async (e) => {
@@ -15,6 +19,7 @@ const ImageUpload = ({ evtId, imageUploaded, token }) => {
 
     const res = await fetch(`${API_URL}/upload`, {
       method: 'POST',
+<<<<<<< HEAD
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -23,6 +28,13 @@ const ImageUpload = ({ evtId, imageUploaded, token }) => {
 
     if (res.ok) {
       imageUploaded();
+=======
+      body: formData,
+    })
+
+    if (res.ok) {
+      imageUploaded
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
     }
   };
 

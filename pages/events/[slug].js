@@ -4,12 +4,34 @@ import Layout from '@/components/Layout';
 import EventMap from '@/components/EventMap';
 import { API_URL } from '@/config/index';
 import styles from '@/styles/Event.module.css';
+<<<<<<< HEAD
 import { ToastContainer } from 'react-toastify';
+=======
+import { ToastContainer, toast } from 'react-toastify';
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
 import 'react-toastify/dist/ReactToastify.css';
 import { useRouter } from 'next/router';
 
 const EventPage = ({ evt }) => {
   const router = useRouter();
+<<<<<<< HEAD
+=======
+  const deleteEvent = async (e) => {
+    if (confirm('Are you sure?')) {
+      const res = await fetch(`${API_URL}/events/${evt.id}`, {
+        method: 'DELETE',
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.message);
+      } else {
+        router.push('/events');
+      }
+    }
+  };
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
   return (
     <Layout>
       <div className={styles.event}>

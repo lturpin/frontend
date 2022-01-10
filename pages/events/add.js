@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { parseCookies } from '@/helpers/index';
+=======
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Layout from '@/components/Layout';
@@ -7,8 +10,14 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { API_URL } from '@/config/index';
 import styles from '@/styles/Form.module.css';
+<<<<<<< HEAD
 
 const AddPage = ({ token }) => {
+=======
+
+
+const AddPage = () => {
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
   const [values, setValues] = useState({
     name: '',
     performers: '',
@@ -23,7 +32,11 @@ const AddPage = ({ token }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
     // Validation
     const hasEmptyFields = Object.values(values).some(
       (element) => element === ''
@@ -37,16 +50,22 @@ const AddPage = ({ token }) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+<<<<<<< HEAD
         Authorization: `Bearer ${token}`,
+=======
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
       },
       body: JSON.stringify(values),
     });
 
     if (!res.ok) {
+<<<<<<< HEAD
       if (res.status === 403 || res.status === 401) {
         toast.error('No token included');
         return;
       }
+=======
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
       toast.error('Something went wrong');
     } else {
       const evt = await res.json();

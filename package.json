@@ -10,14 +10,20 @@
   },
   "dependencies": {
     "cookie": "^0.4.1",
+<<<<<<< HEAD
     "deck.gl": "^8.6.5",
+=======
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
     "moment": "^2.29.1",
     "next": "12.0.6",
     "qs": "^6.10.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-icons": "^4.3.1",
+<<<<<<< HEAD
     "react-map-gl": "^6.1.18",
+=======
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
     "react-toastify": "^8.1.0"
   },
   "devDependencies": {

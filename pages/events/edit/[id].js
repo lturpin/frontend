@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { parseCookies } from '@/helpers/index';
+=======
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
 import { ToastContainer, toast } from 'react-toastify';
 import { FaImage } from 'react-icons/fa';
 import moment from 'moment';
@@ -13,7 +16,11 @@ import Image from 'next/image';
 import { API_URL } from '@/config/index';
 import styles from '@/styles/Form.module.css';
 
+<<<<<<< HEAD
 const EditEventPage = ({ evt, token }) => {
+=======
+const EditEventPage = ({ evt }) => {
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
   const [values, setValues] = useState({
     name: evt.name,
     performers: evt.performers,
@@ -23,6 +30,10 @@ const EditEventPage = ({ evt, token }) => {
     time: evt.time,
     description: evt.description,
   });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
   const [imagePreview, setImagePreview] = useState(
     evt.image ? evt.image.formats.thumbnail.url : null
   );
@@ -47,16 +58,22 @@ const EditEventPage = ({ evt, token }) => {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
+<<<<<<< HEAD
         Authorization: `Bearer ${token}`,
+=======
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
       },
       body: JSON.stringify(values),
     });
 
     if (!res.ok) {
+<<<<<<< HEAD
       if (res.status === 403 || res.status === 401) {
         toast.error('Unauthorized');
         return;
       }
+=======
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
       toast.error('Something went wrong');
     } else {
       const evt = await res.json();
@@ -70,7 +87,11 @@ const EditEventPage = ({ evt, token }) => {
   };
 
   const imageUploaded = async (e) => {
+<<<<<<< HEAD
     const res = await fetch(`${API_URL}/events/${evt.id}`);
+=======
+    const res = await fetch(`${API_URL}/events/${evt.id}`)
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
     const data = await res.json();
     setImagePreview(data.image.formats.thumbnail.url);
     setShowModal(false);
@@ -173,17 +194,22 @@ const EditEventPage = ({ evt, token }) => {
         </button>
       </div>
       <Modal show={showModal} onClose={() => setShowModal(false)}>
+<<<<<<< HEAD
         <ImageUpload
           evtId={evt.id}
           imageUploaded={imageUploaded}
           token={token}
         />
+=======
+        <ImageUpload evtId={evt.id} imageUploaded={imageUploaded} />
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
       </Modal>
     </Layout>
   );
 };
 
 export async function getServerSideProps({ params: { id }, req }) {
+<<<<<<< HEAD
   const { token } = parseCookies(req);
   const res = await fetch(`${API_URL}/events/${id}`);
   const evt = await res.json();
@@ -192,6 +218,16 @@ export async function getServerSideProps({ params: { id }, req }) {
     props: {
       evt,
       token,
+=======
+  const res = await fetch(`${API_URL}/events/${id}`);
+  const evt = await res.json();
+
+  console.log(req.headers.cookie);
+
+  return {
+    props: {
+      evt,
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
     },
   };
 }

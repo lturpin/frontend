@@ -19,6 +19,7 @@
 
 .overlay {
   position: absolute;
+<<<<<<< HEAD
   top: 0;
   left: 0;
   width: 100%;
@@ -26,5 +27,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+=======
+  padding-top: 5em;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 130%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+>>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
   background-color: rgba(0, 0, 0, 0.7);
 }

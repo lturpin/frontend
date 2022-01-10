@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { parseCookies } from '@/helpers/index';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -55,20 +54,11 @@ const DashboardPage = ({ events, token }) => {
           />
         ))}
       </div>
-=======
-import Layout from '@/components/Layout';
-
-const DashboardPage = () => {
-  return (
-    <Layout title="User Dashboard">
-      <h1>Dashboard</h1>
->>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055
     </Layout>
   );
 };
 
 export default DashboardPage;
-<<<<<<< HEAD
 
 export async function getServerSideProps({ req }) {
   const { token } = parseCookies(req);
@@ -89,5 +79,3 @@ export async function getServerSideProps({ req }) {
     },
   };
 }
-=======
->>>>>>> 26eca3579a08165836ebf2036a7e5c61a380f055

@@ -17,6 +17,23 @@ const EventsMap = ({ evt }) => {
 
   const mapRef = useRef();
 
+   const getGeocode = async () => {
+     const encodedAddress = encodeURIComponent(evt.address);
+     const res = await fetch(
+       `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedAddress}.json?access_token=${mapboxToken}`
+     );
+     const geocodeData = await res.json();
+     const geometry = geocodeData.features[0].geometry;
+
+     setViewport({
+       latitude: geometry.coordinates[1],
+       longitude: geometry.coordinates[0],
+       zoom: 15,
+       transitionDuration: 100,
+     });
+     handleGeocoderViewportChange(viewport);
+   };
+
   const handleOnResult = (event) => {
     console.log('event.result', event.result.geometry);
   };
@@ -34,24 +51,8 @@ const EventsMap = ({ evt }) => {
     });
   };
 
-  const getGeocode = async () => {
-    const encodedAddress = encodeURIComponent(evt.address);
-    const res = await fetch(
-      `https://api.mapbox.com/geocoding/v5/mapbox.places/${encodedAddress}.json?access_token=${mapboxToken}`
-    );
-    const geocodeData = await res.json();
-    const geometry = geocodeData.features[0].geometry;
-
-    setViewport({
-      latitude: geometry.coordinates[1],
-      longitude: geometry.coordinates[0],
-      zoom: 15,
-      transitionDuration: 100,
-    });
-    handleGeocoderViewportChange(viewport);
-  };
-
   useEffect(() => {
+   
     getGeocode();
     setLoading(false);
   }, []);
@@ -72,7 +73,12 @@ const EventsMap = ({ evt }) => {
           latitude={viewport.latitude}
           longitude={viewport.longitude}
         >
-          <Image src="/images/pin.svg" width={30} height={30} />
+          <Image
+            src="/images/pin.svg"
+            width={30}
+            height={30}
+            alt="marker"
+          />
         </Marker>
       </ReactMapGL>
     </>

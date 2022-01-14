@@ -1,7 +1,7 @@
 import cookie from 'cookie';
 import { API_URL } from '@/config/index';
 
-export default async (req, res) => {
+const Register =  async (req, res) => {
   if (req.method === 'POST') {
     const { username, email, password } = req.body;
     const strapiRes = await fetch(`${API_URL}/auth/local/register`, {
@@ -43,3 +43,5 @@ export default async (req, res) => {
       .json({ message: `Method ${req.method} not allowed` });
   }
 };
+
+export default Register;

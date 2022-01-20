@@ -9,21 +9,25 @@ import DashboardEvent from '@/components/DashboardEvent';
 
 const DashboardPage = ({ events, token }) => {
   const router = useRouter();
-   
   const deleteEvent = async (id) => {
     if (confirm('Are you sure?')) {
       // Delete uploaded photo
-      const photoIndex = events.findIndex(evt => evt.id === id);
-      const resPhoto = await fetch(`${API_URL}/upload/files/${events[photoIndex].image.id}`, {
-        method: 'DELETE',
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const photoIndex = events.findIndex((evt) => evt.id === id);
+      if (events[photoIndex].image) {
+        const resPhoto = await fetch(
+          `${API_URL}/upload/files/${events[photoIndex].image.id}`,
+          {
+            method: 'DELETE',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
 
-      const photoData = await resPhoto.json();
-      if (!resPhoto.ok) {
-        toast.error(photoData.message);
+        const photoData = await resPhoto.json();
+        if (!resPhoto.ok) {
+          toast.error(photoData.message);
+        }
       }
       const res = await fetch(`${API_URL}/events/${id}`, {
         method: 'DELETE',
